@@ -5,31 +5,72 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+import java.util.Collection;
 
 @Entity
 @NoArgsConstructor
 @Getter
-public class Usuario extends Model {
+public class Usuario extends Model implements UserDetails {
     @Setter
     @Column(nullable = false)
     private String nome;
 
     @Setter
     @Column(nullable = false, unique = true)
-    private String email;
+    private String username;
 
     @Column(nullable = false)
-    private String senha;
+    private String password;
+
+    @Column(name = "account_expired", nullable = false)
+    private boolean accountExpired;
+
+    @Column(name = "account_locked", nullable = false)
+    private boolean accountLocked;
+
+    @Column(name = "credential_expired", nullable = false)
+    private boolean credentialsExpired;
+
+    @Column(nullable = false)
+    private boolean enabled;
 
     public Usuario(UsuarioDto usuarioDto) {
-        this.nome = usuarioDto.nome;
-        this.email = usuarioDto.email;
+        this.enabled = true;
+        this.credentialsExpired = false;
+        this.accountLocked = false;
+        this.accountExpired = false;
 
-        this.setSenha(usuarioDto.senha);
+        this.nome = usuarioDto.nome;
+        this.username = usuarioDto.email;
+
+        this.setPassword(usuarioDto.senha);
     }
 
-    public void setSenha(String senha) {
-        this.senha = new BCryptPasswordEncoder().encode(senha);
+    public void setPassword(String password) {
+        this.password = new BCryptPasswordEncoder().encode(password);
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return !this.accountExpired;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return !this.accountLocked;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return !this.credentialsExpired;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return null;
     }
 }

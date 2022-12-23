@@ -16,7 +16,7 @@ public class UsuarioServiceProvider implements UsuarioService {
     private UsuarioRepository repository;
 
     public Usuario create(UsuarioDto usuarioDto) {
-        Optional<Usuario> response = this.repository.findByEmail(usuarioDto.email);
+        Optional<Usuario> response = this.repository.findByUsername(usuarioDto.email);
 
         if (response.isPresent())
             throw new UsuarioExisteException();
