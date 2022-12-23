@@ -1,7 +1,7 @@
 package com.example.lancamentosfinanceiros.exceptions;
 
-public class UsuarioNotFoundException extends RuntimeException {
-    public UsuarioNotFoundException() {
+public class UserNotFoundException extends RuntimeException {
+    public UserNotFoundException() {
         super("Usuário não encontrado.");
     }
 }

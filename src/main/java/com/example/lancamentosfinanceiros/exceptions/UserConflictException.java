@@ -1,7 +1,7 @@
 package com.example.lancamentosfinanceiros.exceptions;
 
-public class UsuarioExisteException extends RuntimeException{
-    public UsuarioExisteException(){
+public class UserConflictException extends RuntimeException{
+    public UserConflictException(){
         super("Usuário já existe.");
     }
 }

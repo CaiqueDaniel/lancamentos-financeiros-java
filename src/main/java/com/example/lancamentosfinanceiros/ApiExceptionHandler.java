@@ -1,9 +1,9 @@
 package com.example.lancamentosfinanceiros;
 
 import com.example.lancamentosfinanceiros.exceptions.InternalServerException;
-import com.example.lancamentosfinanceiros.exceptions.SaldoNotFoundException;
-import com.example.lancamentosfinanceiros.exceptions.UsuarioExisteException;
-import com.example.lancamentosfinanceiros.exceptions.UsuarioNotFoundException;
+import com.example.lancamentosfinanceiros.exceptions.BalanceNotFoundException;
+import com.example.lancamentosfinanceiros.exceptions.UserConflictException;
+import com.example.lancamentosfinanceiros.exceptions.UserNotFoundException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +16,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(value = {
-            UsuarioExisteException.class
+            UserConflictException.class
     })
     protected ResponseEntity handleConflict(RuntimeException exception, WebRequest request) {
         return this.handleExceptionInternal(
@@ -29,8 +29,8 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
     }
 
     @ExceptionHandler(value = {
-            UsuarioNotFoundException.class,
-            SaldoNotFoundException.class
+            UserNotFoundException.class,
+            BalanceNotFoundException.class
     })
     protected ResponseEntity handleNotFound(RuntimeException exception, WebRequest request) {
         return this.handleExceptionInternal(

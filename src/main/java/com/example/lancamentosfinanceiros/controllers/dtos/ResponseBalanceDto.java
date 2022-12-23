@@ -1,0 +1,16 @@
+package com.example.lancamentosfinanceiros.controllers.dtos;
+
+import com.example.lancamentosfinanceiros.models.Balance;
+
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+
+public class ResponseBalanceDto {
+    public BigDecimal valor;
+    public LocalDateTime ultimaAtualizacao;
+
+    public ResponseBalanceDto(Balance balance) {
+        this.valor = balance.getValor();
+        this.ultimaAtualizacao = balance.getAtualizadoEm();
+    }
+}

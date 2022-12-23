@@ -1,7 +1,7 @@
 package com.example.lancamentosfinanceiros.exceptions;
 
-public class SaldoNotFoundException extends RuntimeException {
-    public SaldoNotFoundException() {
+public class BalanceNotFoundException extends RuntimeException {
+    public BalanceNotFoundException() {
         super("Saldo não encontrado.");
     }
 }

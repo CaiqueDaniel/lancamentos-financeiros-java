@@ -1,6 +1,6 @@
 package com.example.lancamentosfinanceiros.models;
 
-import com.example.lancamentosfinanceiros.controllers.dtos.UsuarioDto;
+import com.example.lancamentosfinanceiros.controllers.dtos.RequestUserDto;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,7 +14,7 @@ import java.util.Collection;
 @Entity
 @NoArgsConstructor
 @Getter
-public class Usuario extends Model implements UserDetails {
+public class User extends Model implements UserDetails {
     @Setter
     @Column(nullable = false)
     private String nome;
@@ -38,7 +38,7 @@ public class Usuario extends Model implements UserDetails {
     @Column(nullable = false)
     private boolean enabled;
 
-    public Usuario(UsuarioDto usuarioDto) {
+    public User(RequestUserDto usuarioDto) {
         this.enabled = true;
         this.credentialsExpired = false;
         this.accountLocked = false;

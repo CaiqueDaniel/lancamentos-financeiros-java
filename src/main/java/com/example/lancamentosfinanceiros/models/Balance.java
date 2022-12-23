@@ -12,16 +12,16 @@ import java.math.BigDecimal;
 @Entity
 @Getter
 @NoArgsConstructor
-public class Saldo extends Model {
+public class Balance extends Model {
     @OneToOne
-    private Usuario usuario;
+    private User user;
 
     @Column(nullable = false)
     @Setter
     private BigDecimal valor;
 
-    public Saldo(Usuario usuario, BigDecimal valor) {
-        this.usuario = usuario;
+    public Balance(User user, BigDecimal valor) {
+        this.user = user;
         this.valor = valor;
     }
 }

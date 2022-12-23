@@ -1,5 +1,5 @@
 package com.example.lancamentosfinanceiros.controllers.dtos;
 
-public class UsuarioDto {
+public class RequestUserDto {
     public String nome, email, senha;
 }
