@@ -17,6 +17,8 @@ public interface FinancialReleaseRepository extends JpaRepository<FinancialRelea
 
     List<FinancialRelease> findAllByUserAndCreatedAtBetween(User user, LocalDateTime from, LocalDateTime to, Pageable pageable);
 
+    List<FinancialRelease> findAllByCreatedAtLessThan(LocalDateTime createdAt);
+
     Long countByUser(User user);
 
     Long countByUserAndCreatedAtGreaterThanEqual(User user, LocalDateTime createdAt);

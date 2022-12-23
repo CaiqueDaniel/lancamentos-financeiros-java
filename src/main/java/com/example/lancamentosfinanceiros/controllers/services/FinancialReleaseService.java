@@ -17,8 +17,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpServerErrorException;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -54,8 +54,8 @@ public class FinancialReleaseService {
         int page = filter.page() > 0 ? filter.page() : 0;
 
         Long total;
+        List<FinancialRelease> financialReleases;
         Pageable pageable = PageRequest.of(page - 1, FinancialReleaseService.LIMIT);
-        List<FinancialRelease> financialReleases = new ArrayList<>();
 
         if (filter.fromDate().isPresent() && filter.toDate().isPresent()) {
             LocalDateTime from = filter.fromDate().get().atStartOfDay(), to = filter.toDate().get().atStartOfDay();
@@ -82,5 +82,18 @@ public class FinancialReleaseService {
                 .collect(Collectors.toList());
 
         return new ResponsePagination<>(financialReleaseDtos, page, FinancialReleaseService.LIMIT, total);
+    }
+
+    public List<FinancialRelease> findAllOldData() {
+        LocalDateTime limitDate = LocalDate.now().minusMonths(3).withDayOfMonth(1).atStartOfDay();
+        return this.repository.findAllByCreatedAtLessThan(limitDate);
+    }
+
+    public void delete(FinancialRelease financialRelease) {
+        this.repository.delete(financialRelease);
+    }
+
+    public void delete(List<FinancialRelease> financialReleases) {
+        this.repository.deleteAll(financialReleases);
     }
 }
