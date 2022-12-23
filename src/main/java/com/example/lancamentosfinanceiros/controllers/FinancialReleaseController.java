@@ -28,16 +28,16 @@ public class FinancialReleaseController {
     private UserService userService;
 
     @PostMapping
-    public ResponseEntity<FinancialRelease> create(@RequestBody RequestFinancialReleaseDto lancamentoDto, Authentication auth) throws URISyntaxException {
-        User user = this.userService.findOne(auth.getName());
-        FinancialRelease financialRelease = this.financialReleaseService.create(lancamentoDto, user);
+    public ResponseEntity<FinancialRelease> create(@RequestBody RequestFinancialReleaseDto financialReleaseDto, Authentication auth) throws URISyntaxException {
+        User user = this.userService.findOneBy(auth.getName());
+        FinancialRelease financialRelease = this.financialReleaseService.create(financialReleaseDto, user);
 
         return ResponseEntity.created(new URI("/api/lancamento/" + financialRelease.getId())).build();
     }
 
     @GetMapping
     public ResponseEntity<ResponsePagination<ResponseFinancialReleaseDto>> index(@RequestParam(name = "pagina", defaultValue = "1") int page, Authentication auth) {
-        User user = this.userService.findOne(auth.getName());
+        User user = this.userService.findOneBy(auth.getName());
         ResponsePagination<ResponseFinancialReleaseDto> response= this.financialReleaseService.findAllFrom(user, page);
 
         return ResponseEntity.ok(response);

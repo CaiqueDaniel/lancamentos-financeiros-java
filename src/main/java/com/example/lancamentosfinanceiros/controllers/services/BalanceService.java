@@ -14,8 +14,8 @@ public class BalanceService {
     @Autowired
     private BalanceRepository repository;
 
-    public Balance findOne(User user) {
-        Optional<Balance> response = this.repository.findByUsuario(user);
+    public Balance findOneBy(User user) {
+        Optional<Balance> response = this.repository.findByUser(user);
 
         if (response.isEmpty())
             throw new BalanceNotFoundException();

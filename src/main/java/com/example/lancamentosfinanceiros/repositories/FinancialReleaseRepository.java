@@ -8,9 +8,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface FinancialReleaseRepository extends JpaRepository<FinancialRelease, Long>{
-    List<FinancialRelease> findAllByUsuario(User user, Pageable pageable);
+    List<FinancialRelease> findAllByUser(User user, Pageable pageable);
 
-    Long countByUsuario(User user);
+    Long countByUser(User user);
 
     //List<Lancamento> findAllByData(LocalDateTime data, Pageable pageable);
 }

@@ -21,8 +21,8 @@ public class BalanceController {
 
     @GetMapping
     public ResponseEntity<ResponseBalanceDto> view(Authentication auth) {
-        User user = this.userService.findOne(auth.getName());
-        Balance balance = this.balanceService.findOne(user);
+        User user = this.userService.findOneBy(auth.getName());
+        Balance balance = this.balanceService.findOneBy(user);
 
         return ResponseEntity.ok(new ResponseBalanceDto(balance));
     }

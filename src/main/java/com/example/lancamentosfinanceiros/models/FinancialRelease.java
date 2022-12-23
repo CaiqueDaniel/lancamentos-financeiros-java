@@ -18,18 +18,18 @@ public class FinancialRelease extends Model {
     private User user;
 
     @Column(nullable = false)
-    private BigDecimal valor;
+    private BigDecimal value;
 
     @Column(nullable = false)
-    private String descricao;
+    private String description;
 
     @Column(nullable = false)
-    private LocalDate data;
+    private LocalDate date;
 
-    public FinancialRelease(RequestFinancialReleaseDto lancamentoDto, User user) {
+    public FinancialRelease(RequestFinancialReleaseDto financialReleaseDto, User user) {
         this.user = user;
-        this.valor = lancamentoDto.valor;
-        this.descricao = lancamentoDto.descricao;
-        this.data = lancamentoDto.data;
+        this.value = financialReleaseDto.valor;
+        this.description = financialReleaseDto.descricao;
+        this.date = financialReleaseDto.data;
     }
 }

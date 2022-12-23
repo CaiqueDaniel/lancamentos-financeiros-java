@@ -10,7 +10,7 @@ public class ResponseBalanceDto {
     public LocalDateTime ultimaAtualizacao;
 
     public ResponseBalanceDto(Balance balance) {
-        this.valor = balance.getValor();
-        this.ultimaAtualizacao = balance.getAtualizadoEm();
+        this.valor = balance.getValue();
+        this.ultimaAtualizacao = balance.getUpdatedAt();
     }
 }

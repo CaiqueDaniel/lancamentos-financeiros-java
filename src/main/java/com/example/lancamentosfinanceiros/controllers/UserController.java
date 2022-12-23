@@ -20,8 +20,8 @@ public class UserController {
     private UserService service;
 
     @PostMapping
-    public ResponseEntity<Void> create(@RequestBody RequestUserDto usuarioDto) throws URISyntaxException {
-        User user = this.service.create(usuarioDto);
+    public ResponseEntity<Void> create(@RequestBody RequestUserDto userDto) throws URISyntaxException {
+        User user = this.service.create(userDto);
         return ResponseEntity.created(new URI("/api/usuario/" + user.getId())).build();
     }
 }

@@ -17,7 +17,7 @@ import java.util.Collection;
 public class User extends Model implements UserDetails {
     @Setter
     @Column(nullable = false)
-    private String nome;
+    private String name;
 
     @Setter
     @Column(nullable = false, unique = true)
@@ -38,16 +38,16 @@ public class User extends Model implements UserDetails {
     @Column(nullable = false)
     private boolean enabled;
 
-    public User(RequestUserDto usuarioDto) {
+    public User(RequestUserDto userDto) {
         this.enabled = true;
         this.credentialsExpired = false;
         this.accountLocked = false;
         this.accountExpired = false;
 
-        this.nome = usuarioDto.nome;
-        this.username = usuarioDto.email;
+        this.name = userDto.nome;
+        this.username = userDto.email;
 
-        this.setPassword(usuarioDto.senha);
+        this.setPassword(userDto.senha);
     }
 
     public void setPassword(String password) {

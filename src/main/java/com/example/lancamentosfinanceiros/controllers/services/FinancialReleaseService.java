@@ -28,18 +28,18 @@ public class FinancialReleaseService {
 
     private final static int LIMIT = 30;
 
-    public FinancialRelease create(RequestFinancialReleaseDto lancamentoDto, User user) throws HttpServerErrorException.InternalServerError {
-        FinancialRelease financialRelease = new FinancialRelease(lancamentoDto, user);
-        Balance balance = this.balanceService.findOne(user);
-        BigDecimal valorAnterior = balance.getValor();
+    public FinancialRelease create(RequestFinancialReleaseDto financialReleaseDto, User user) throws HttpServerErrorException.InternalServerError {
+        FinancialRelease financialRelease = new FinancialRelease(financialReleaseDto, user);
+        Balance balance = this.balanceService.findOneBy(user);
+        BigDecimal previousBalanceValue = balance.getValue();
 
         try {
-            balance.setValor(balance.getValor().add(financialRelease.getValor()));
+            balance.setValue(balance.getValue().add(financialRelease.getValue()));
             this.balanceService.update(balance);
 
             return this.repository.saveAndFlush(financialRelease);
         } catch (HibernateException exception) {
-            balance.setValor(valorAnterior);
+            balance.setValue(previousBalanceValue);
             this.balanceService.update(balance);
 
             throw new InternalServerException(exception.getLocalizedMessage());
@@ -49,10 +49,10 @@ public class FinancialReleaseService {
     public ResponsePagination<ResponseFinancialReleaseDto> findAllFrom(User user, int page) {
         page = page > 0 ? page - 1 : 0;
 
-        Long total = this.repository.countByUsuario(user);
-        List<ResponseFinancialReleaseDto> lancamentoDtos = this.repository.findAllByUsuario(user, PageRequest.of(page, FinancialReleaseService.LIMIT))
+        Long total = this.repository.countByUser(user);
+        List<ResponseFinancialReleaseDto> financialReleaseDtos = this.repository.findAllByUser(user, PageRequest.of(page, FinancialReleaseService.LIMIT))
                 .stream().map((financialRelease) -> new ResponseFinancialReleaseDto(financialRelease)).collect(Collectors.toList());
 
-        return new ResponsePagination<>(lancamentoDtos, page, FinancialReleaseService.LIMIT, total);
+        return new ResponsePagination<>(financialReleaseDtos, page, FinancialReleaseService.LIMIT, total);
     }
 }

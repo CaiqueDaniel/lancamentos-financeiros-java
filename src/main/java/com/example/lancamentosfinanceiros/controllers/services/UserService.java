@@ -21,13 +21,13 @@ public class UserService {
     @Autowired
     private BalanceRepository balanceRepository;
 
-    public User create(RequestUserDto usuarioDto) {
-        Optional<User> response = this.repository.findByUsername(usuarioDto.email);
+    public User create(RequestUserDto userDto) {
+        Optional<User> response = this.repository.findByUsername(userDto.email);
 
         if (response.isPresent())
             throw new UserConflictException();
 
-        User user = new User(usuarioDto);
+        User user = new User(userDto);
         user = this.repository.saveAndFlush(user);
 
         Balance balance = new Balance(user, new BigDecimal(0));
@@ -36,7 +36,7 @@ public class UserService {
         return user;
     }
 
-    public User findOne(String username) {
+    public User findOneBy(String username) {
         Optional<User> response = this.repository.findByUsername(username);
 
         if (response.isEmpty())

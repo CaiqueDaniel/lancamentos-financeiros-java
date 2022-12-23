@@ -18,10 +18,10 @@ public class Balance extends Model {
 
     @Column(nullable = false)
     @Setter
-    private BigDecimal valor;
+    private BigDecimal value;
 
-    public Balance(User user, BigDecimal valor) {
+    public Balance(User user, BigDecimal value) {
         this.user = user;
-        this.valor = valor;
+        this.value = value;
     }
 }

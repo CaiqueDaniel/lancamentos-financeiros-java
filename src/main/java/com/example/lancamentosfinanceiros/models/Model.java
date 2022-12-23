@@ -6,6 +6,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
+
 @MappedSuperclass
 @Getter
 public abstract class Model {
@@ -14,11 +15,11 @@ public abstract class Model {
     @Column(name = "id", nullable = false)
     protected Long id;
 
-    @Column(name = "criado_em")
+    @Column(name = "created_at")
     @CreationTimestamp
-    protected LocalDateTime criadoEm;
+    protected LocalDateTime createdAt;
 
-    @Column(name = "atualizado_em")
+    @Column(name = "updated_at")
     @UpdateTimestamp
-    protected LocalDateTime atualizadoEm;
+    protected LocalDateTime updatedAt;
 }
