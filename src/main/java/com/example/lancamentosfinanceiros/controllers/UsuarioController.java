@@ -19,7 +19,7 @@ public class UsuarioController {
     @Autowired
     private UsuarioService service;
 
-    @PostMapping("/")
+    @PostMapping
     public ResponseEntity<Void> create(@RequestBody UsuarioDto usuarioDto) throws URISyntaxException {
         Usuario usuario = this.service.create(usuarioDto);
         return ResponseEntity.created(new URI("/api/usuario/" + usuario.getId())).build();
