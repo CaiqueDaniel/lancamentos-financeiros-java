@@ -17,16 +17,12 @@ public class ResponsePagination<I> {
     }
 
     private static Optional<String> getNext(int page, int limit, Long total) {
-        page += 1;
-
         return page < total / limit ?
                 Optional.of("?pagina=" + (page + 1)) :
                 Optional.empty();
     }
 
     private static Optional<String> getPrev(int page) {
-        page += 1;
-
         return page > 1 ?
                 Optional.of("?pagina=" + (page - 1)) :
                 Optional.empty();

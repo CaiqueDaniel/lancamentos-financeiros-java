@@ -3,6 +3,7 @@ package com.example.lancamentosfinanceiros.controllers.services;
 import com.example.lancamentosfinanceiros.controllers.dtos.RequestFinancialReleaseDto;
 import com.example.lancamentosfinanceiros.controllers.dtos.ResponseFinancialReleaseDto;
 import com.example.lancamentosfinanceiros.controllers.dtos.ResponsePagination;
+import com.example.lancamentosfinanceiros.controllers.utils.FinancialReleaseFilter;
 import com.example.lancamentosfinanceiros.exceptions.InternalServerException;
 import com.example.lancamentosfinanceiros.models.FinancialRelease;
 import com.example.lancamentosfinanceiros.models.Balance;
@@ -11,10 +12,13 @@ import com.example.lancamentosfinanceiros.repositories.FinancialReleaseRepositor
 import org.hibernate.HibernateException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpServerErrorException;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -46,12 +50,36 @@ public class FinancialReleaseService {
         }
     }
 
-    public ResponsePagination<ResponseFinancialReleaseDto> findAllFrom(User user, int page) {
-        page = page > 0 ? page - 1 : 0;
+    public ResponsePagination<ResponseFinancialReleaseDto> findAllFrom(User user, FinancialReleaseFilter filter) {
+        int page = filter.page() > 0 ? filter.page() : 0;
 
-        Long total = this.repository.countByUser(user);
-        List<ResponseFinancialReleaseDto> financialReleaseDtos = this.repository.findAllByUser(user, PageRequest.of(page, FinancialReleaseService.LIMIT))
-                .stream().map((financialRelease) -> new ResponseFinancialReleaseDto(financialRelease)).collect(Collectors.toList());
+        Long total;
+        Pageable pageable = PageRequest.of(page - 1, FinancialReleaseService.LIMIT);
+        List<FinancialRelease> financialReleases = new ArrayList<>();
+
+        if (filter.fromDate().isPresent() && filter.toDate().isPresent()) {
+            LocalDateTime from = filter.fromDate().get().atStartOfDay(), to = filter.toDate().get().atStartOfDay();
+
+            financialReleases = this.repository.findAllByUserAndCreatedAtBetween(user, from, to, pageable);
+            total = this.repository.countByUserAndCreatedAtBetween(user, from, to);
+        } else if (filter.fromDate().isPresent()) {
+            LocalDateTime from = filter.fromDate().get().atStartOfDay();
+
+            financialReleases = this.repository.findAllByUserAndCreatedAtGreaterThanEqual(user, from, pageable);
+            total = this.repository.countByUserAndCreatedAtGreaterThanEqual(user, from);
+        } else if (filter.toDate().isPresent()) {
+            LocalDateTime to = filter.toDate().get().atStartOfDay();
+
+            financialReleases = this.repository.findAllByUserAndCreatedAtLessThanEqual(user, to, pageable);
+            total = this.repository.countByUserAndCreatedAtLessThanEqual(user, to);
+        } else {
+            financialReleases = this.repository.findAllByUser(user, pageable);
+            total = this.repository.countByUser(user);
+        }
+
+        List<ResponseFinancialReleaseDto> financialReleaseDtos = financialReleases.stream()
+                .map((financialRelease) -> new ResponseFinancialReleaseDto(financialRelease))
+                .collect(Collectors.toList());
 
         return new ResponsePagination<>(financialReleaseDtos, page, FinancialReleaseService.LIMIT, total);
     }
