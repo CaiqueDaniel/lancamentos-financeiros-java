@@ -26,9 +26,4 @@ public class SaldoController {
 
         return ResponseEntity.ok(new ResponseSaldoDto(saldo));
     }
-
-    /*@PutMapping
-    public ResponseEntity<Saldo> edit(@RequestBody RequestSaldoDto saldoDto, Authentication auth) {
-
-    }*/
 }

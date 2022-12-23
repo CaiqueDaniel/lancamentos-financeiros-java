@@ -7,7 +7,6 @@ import com.example.lancamentosfinanceiros.repositories.SaldoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
 import java.util.Optional;
 
 @Service
@@ -24,9 +23,7 @@ public class SaldoService {
         return response.get();
     }
 
-    public Saldo create(BigDecimal valor) {
-        Saldo saldo = new Saldo();
-
-        return saldo;
+    public Saldo update(Saldo saldo) {
+        return this.repository.saveAndFlush(saldo);
     }
 }
