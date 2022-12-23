@@ -22,6 +22,8 @@ Para iniciar a aplicação em modo de **desenvolvimento**, é necessário antes 
 Java EE como o [InteliJ Community Edition](https://www.jetbrains.com/pt-br/idea/download/#section=windows), por exemplo, 
 e também um SGBD como o [MySQL](https://dev.mysql.com/downloads/installer/).  
 
+Também será necessário gerar chaves RSAs. As instruções estão localizadas em **/src/resources/certs/README.md**.
+
 Uma vez com o ambiente pronto, basta executar a aplicação através da classe **LancamentosFinanceirosApplication**.  
 
 Você pode alterar as configurações da aplicação através do arquivo **src/main/resources/application.properties**.
