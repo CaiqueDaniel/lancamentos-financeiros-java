@@ -1,7 +1,7 @@
 package com.example.lancamentosfinanceiros.controllers;
 
-import com.example.lancamentosfinanceiros.controllers.dtos.RequestUserDto;
-import com.example.lancamentosfinanceiros.controllers.services.UserService;
+import com.example.lancamentosfinanceiros.dtos.requests.RequestUserDto;
+import com.example.lancamentosfinanceiros.services.UserService;
 import com.example.lancamentosfinanceiros.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

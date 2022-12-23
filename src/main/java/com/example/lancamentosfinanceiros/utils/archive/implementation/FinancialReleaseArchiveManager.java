@@ -2,7 +2,7 @@ package com.example.lancamentosfinanceiros.utils.archive.implementation;
 
 import com.example.lancamentosfinanceiros.exceptions.ArchiveException;
 import com.example.lancamentosfinanceiros.utils.archive.ArchiveManager;
-import com.example.lancamentosfinanceiros.utils.archive.dtos.FinancialRealeaseArchiveDto;
+import com.example.lancamentosfinanceiros.dtos.FinancialRealeaseArchiveDto;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;

@@ -1,6 +1,6 @@
 package com.example.lancamentosfinanceiros.models;
 
-import com.example.lancamentosfinanceiros.controllers.dtos.RequestUserDto;
+import com.example.lancamentosfinanceiros.dtos.requests.RequestUserDto;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

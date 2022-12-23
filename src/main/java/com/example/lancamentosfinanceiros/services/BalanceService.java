@@ -1,4 +1,4 @@
-package com.example.lancamentosfinanceiros.controllers.services;
+package com.example.lancamentosfinanceiros.services;
 
 import com.example.lancamentosfinanceiros.exceptions.BalanceNotFoundException;
 import com.example.lancamentosfinanceiros.models.Balance;

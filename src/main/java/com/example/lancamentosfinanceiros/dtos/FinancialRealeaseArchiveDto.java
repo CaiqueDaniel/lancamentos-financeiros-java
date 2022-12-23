@@ -1,4 +1,4 @@
-package com.example.lancamentosfinanceiros.utils.archive.dtos;
+package com.example.lancamentosfinanceiros.dtos;
 
 import com.example.lancamentosfinanceiros.models.FinancialRelease;
 import lombok.NoArgsConstructor;

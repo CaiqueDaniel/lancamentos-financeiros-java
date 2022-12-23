@@ -1,8 +1,8 @@
 package com.example.lancamentosfinanceiros.controllers;
 
-import com.example.lancamentosfinanceiros.controllers.dtos.ResponseBalanceDto;
-import com.example.lancamentosfinanceiros.controllers.services.BalanceService;
-import com.example.lancamentosfinanceiros.controllers.services.UserService;
+import com.example.lancamentosfinanceiros.dtos.responses.ResponseBalanceDto;
+import com.example.lancamentosfinanceiros.services.BalanceService;
+import com.example.lancamentosfinanceiros.services.UserService;
 import com.example.lancamentosfinanceiros.models.Balance;
 import com.example.lancamentosfinanceiros.models.User;
 import org.springframework.beans.factory.annotation.Autowired;

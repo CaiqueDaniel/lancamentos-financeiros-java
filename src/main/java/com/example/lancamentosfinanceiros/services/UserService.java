@@ -1,6 +1,6 @@
-package com.example.lancamentosfinanceiros.controllers.services;
+package com.example.lancamentosfinanceiros.services;
 
-import com.example.lancamentosfinanceiros.controllers.dtos.RequestUserDto;
+import com.example.lancamentosfinanceiros.dtos.requests.RequestUserDto;
 import com.example.lancamentosfinanceiros.exceptions.UserConflictException;
 import com.example.lancamentosfinanceiros.exceptions.UserNotFoundException;
 import com.example.lancamentosfinanceiros.models.Balance;

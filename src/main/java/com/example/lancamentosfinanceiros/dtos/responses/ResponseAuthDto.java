@@ -1,4 +1,4 @@
-package com.example.lancamentosfinanceiros.controllers.dtos;
+package com.example.lancamentosfinanceiros.dtos.responses;
 
 public class ResponseAuthDto {
     public String token;

@@ -1,6 +1,6 @@
 package com.example.lancamentosfinanceiros.controllers;
 
-import com.example.lancamentosfinanceiros.controllers.dtos.ResponseAuthDto;
+import com.example.lancamentosfinanceiros.dtos.responses.ResponseAuthDto;
 import com.example.lancamentosfinanceiros.security.services.TokenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;

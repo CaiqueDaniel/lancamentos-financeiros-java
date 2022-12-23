@@ -1,10 +1,10 @@
 package com.example.lancamentosfinanceiros.controllers;
 
-import com.example.lancamentosfinanceiros.controllers.dtos.RequestFinancialReleaseDto;
-import com.example.lancamentosfinanceiros.controllers.dtos.ResponseFinancialReleaseDto;
-import com.example.lancamentosfinanceiros.controllers.dtos.ResponsePagination;
-import com.example.lancamentosfinanceiros.controllers.services.FinancialReleaseService;
-import com.example.lancamentosfinanceiros.controllers.services.UserService;
+import com.example.lancamentosfinanceiros.dtos.requests.RequestFinancialReleaseDto;
+import com.example.lancamentosfinanceiros.dtos.responses.ResponseFinancialReleaseDto;
+import com.example.lancamentosfinanceiros.dtos.responses.ResponsePagination;
+import com.example.lancamentosfinanceiros.services.FinancialReleaseService;
+import com.example.lancamentosfinanceiros.services.UserService;
 import com.example.lancamentosfinanceiros.controllers.utils.FinancialReleaseFilter;
 import com.example.lancamentosfinanceiros.models.FinancialRelease;
 import com.example.lancamentosfinanceiros.models.User;

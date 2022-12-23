@@ -1,5 +1,6 @@
-package com.example.lancamentosfinanceiros.controllers.dtos;
+package com.example.lancamentosfinanceiros.dtos.responses;
 
+import com.example.lancamentosfinanceiros.dtos.requests.RequestFinancialReleaseDto;
 import com.example.lancamentosfinanceiros.models.FinancialRelease;
 import lombok.Getter;
 

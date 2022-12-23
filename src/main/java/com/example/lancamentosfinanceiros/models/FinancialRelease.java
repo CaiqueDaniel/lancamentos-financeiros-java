@@ -1,6 +1,6 @@
 package com.example.lancamentosfinanceiros.models;
 
-import com.example.lancamentosfinanceiros.controllers.dtos.RequestFinancialReleaseDto;
+import com.example.lancamentosfinanceiros.dtos.requests.RequestFinancialReleaseDto;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;

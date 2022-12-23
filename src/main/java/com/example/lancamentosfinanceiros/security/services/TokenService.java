@@ -1,6 +1,6 @@
 package com.example.lancamentosfinanceiros.security.services;
 
-import com.example.lancamentosfinanceiros.controllers.dtos.ResponseAuthDto;
+import com.example.lancamentosfinanceiros.dtos.responses.ResponseAuthDto;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.oauth2.jwt.JwtClaimsSet;

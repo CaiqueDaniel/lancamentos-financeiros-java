@@ -1,4 +1,4 @@
-package com.example.lancamentosfinanceiros.controllers.dtos;
+package com.example.lancamentosfinanceiros.dtos.responses;
 
 import com.example.lancamentosfinanceiros.models.Balance;
 

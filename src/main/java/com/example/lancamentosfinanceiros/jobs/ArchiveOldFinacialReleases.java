@@ -1,10 +1,10 @@
 package com.example.lancamentosfinanceiros.jobs;
 
-import com.example.lancamentosfinanceiros.controllers.services.FinancialReleaseService;
+import com.example.lancamentosfinanceiros.services.FinancialReleaseService;
 import com.example.lancamentosfinanceiros.exceptions.ArchiveException;
 import com.example.lancamentosfinanceiros.models.FinancialRelease;
 import com.example.lancamentosfinanceiros.utils.archive.ArchiveManager;
-import com.example.lancamentosfinanceiros.utils.archive.dtos.FinancialRealeaseArchiveDto;
+import com.example.lancamentosfinanceiros.dtos.FinancialRealeaseArchiveDto;
 import com.example.lancamentosfinanceiros.utils.archive.implementation.FinancialReleaseArchiveManager;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
