@@ -14,13 +14,13 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 public class FinancialRelease extends Model {
     @ManyToOne
-    private User user;
+    protected User user;
 
     @Column(nullable = false)
-    private BigDecimal value;
+    protected BigDecimal value;
 
     @Column(nullable = false)
-    private String description;
+    protected String description;
 
     public FinancialRelease(RequestFinancialReleaseDto financialReleaseDto, User user) {
         this.user = user;
