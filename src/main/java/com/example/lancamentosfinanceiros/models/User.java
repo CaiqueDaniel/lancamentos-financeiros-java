@@ -14,6 +14,7 @@ import java.util.Collection;
 @Entity
 @NoArgsConstructor
 @Getter
+@Table(name = "users")
 public class User extends Model implements UserDetails {
     @Setter
     @Column(nullable = false)

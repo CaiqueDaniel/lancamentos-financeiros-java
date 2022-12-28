@@ -4,6 +4,7 @@ import com.example.lancamentosfinanceiros.dtos.requests.RequestFinancialReleaseD
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -12,6 +13,7 @@ import java.math.BigDecimal;
 @Entity
 @Getter
 @NoArgsConstructor
+@Table(name = "financial_releases")
 public class FinancialRelease extends Model {
     @ManyToOne
     protected User user;
