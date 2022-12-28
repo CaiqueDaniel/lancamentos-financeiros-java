@@ -6,17 +6,23 @@ import com.example.lancamentosfinanceiros.dtos.FinancialRealeaseArchiveDto;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import jakarta.annotation.PostConstruct;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class FinancialReleaseArchiveManager implements ArchiveManager<FinancialRealeaseArchiveDto> {
-    private final File file;
-    private static final String FILENAME = "storage/oldFinancialReleases.json";
+    private File file;
+    @Value("${file-storage-name}")
+    private String filename;
 
-    public FinancialReleaseArchiveManager() {
-        this.file = new File(FinancialReleaseArchiveManager.FILENAME);
+    @PostConstruct
+    public void initialize() {
+        this.file = new File(this.filename);
     }
 
     @Override
