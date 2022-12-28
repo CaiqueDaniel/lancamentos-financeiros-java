@@ -37,11 +37,6 @@ public class ArchiveOldFinacialReleases {
 
         List<FinancialRelease> oldFinancialReleases = this.financialReleaseService.findAllOldData();
 
-        if (oldFinancialReleases.size() == 0) {
-            this.logger.info("Nenhum lançamento financeiro antigo.");
-            return;
-        }
-
         this.updateArchive(oldFinancialReleases);
         this.financialReleaseService.delete(oldFinancialReleases);
 

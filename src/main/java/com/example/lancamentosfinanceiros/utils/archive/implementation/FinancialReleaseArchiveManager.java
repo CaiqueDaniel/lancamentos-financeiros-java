@@ -28,13 +28,6 @@ public class FinancialReleaseArchiveManager implements ArchiveManager<FinancialR
     @Override
     public void saveToFile(List<FinancialRealeaseArchiveDto> data) throws ArchiveException {
         try {
-            if (this.file.exists()) {
-                List<FinancialRealeaseArchiveDto> fileData = this.getFromFile();
-                fileData.addAll(data);
-
-                data = fileData;
-            }
-
             ObjectMapper mapper = new ObjectMapper();
             mapper.writeValue(this.file, data);
             mapper.registerModule(new JavaTimeModule());
